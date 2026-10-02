@@ -1,0 +1,138 @@
+{% if section.blocks.size > 0 %}
+{% for block in section.blocks %}
+          {%- assign image = block.settings.image -%}   
+          {%- assign title = block.settings.title -%}  
+          {%- assign link = block.settings.link -%}
+          <!-- Marking The End Of First Linking -->
+
+    <div style="padding: 0px 0;"  align="center" >
+    
+                <div class="row a row1" >
+                    
+                    <div class="TableBanner1 a ">
+                      <a href="{{ link }}">
+                       											  
+                        <img src="{{ image | img_url: '800x1400' }}" alt="Tableware Banner 1" title="Tableware Banner 1" style="width:100%">
+                        <div  style="font-size: 20px; line-height: 1.25;     margin-bottom: 20px;margin-top: 20px;">  {{ title }}      </div>                								
+                                  
+                      </a>
+                       
+                    </div>
+                  <!-- Marking The End -->
+                
+                </div>
+                <!-- Marking The End Of Row -->
+      
+    </div>
+
+{% endfor %}
+{% endif %}
+
+
+{% schema %}
+  {
+
+  "name": "Tableware Banner 1",
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+                                        {
+                                          "type": "image_picker",
+                                          "id": "image",
+                                          "label": "Image",
+                                          "info": "image should be 800px x 800px"
+                                        },
+                                        {
+                                          "type": "url",
+                                          "id": "link",
+                                          "label": "Link"
+                                        },
+                                        {
+                                        "type": "text",
+                                        "id": "title",
+                                        "label": "Heading",
+                                        "default": "Text Blow Banner Here"
+                                       }
+		
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "Tableware Banner 1",
+    "category": "Banners",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+a {
+  box-sizing: border-box;
+}
+
+.TableBanner1 { 
+  float: left; 
+  width:  100%;   
+  padding-left: 25px;     
+  padding-right: 25px;  
+  padding-top:2px;
+}
+@media screen and (max-width: 767px) {
+  .TableBanner1 { 
+       padding-left: 1px;
+       padding-right: 1px;
+  } 
+
+}
+
+.row1 { 
+   
+  padding-left: 155px;     
+  padding-right: 155px;  
+
+}
+@media screen and (max-width: 767px) {
+  .row1 { 
+       padding-left:  30px;
+       padding-right: 30px;
+  } 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/* Clearfix (clear floats) */ 
+.row::after {
+  content: ""; 
+  clear: both;
+  display: table;
+}
+
+
+
+
+{% endstylesheet %}

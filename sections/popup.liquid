@@ -1,0 +1,253 @@
+
+
+
+{% if section.blocks.size > 0 %}
+
+
+	<div  >
+      <div>
+        {% for block in section.blocks %}
+           {%- assign image = block.settings.image -%}
+    {%- assign IMAGEMOBILE = block.settings.imageMOBILE -%}
+     
+
+<div style="background:red;    ">
+
+               <div class="model active" id="model">
+               <button data-close-button class="close-button">Shop Now</button>
+        <div class="model-body webview"   style="background-image: url('{{ image | img_url: 'x1500' }}');
+    width: 100%;
+    height: 100%;
+    background-size: cover; background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;">
+    
+        </div>
+                 
+         <div class="model-body mobileview" style="background-image: url({{ IMAGEMOBILE | img_url: 'x1500' }});
+    width: 100%;
+    height: 100%;
+    background-size: cover; background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center; scroll-behavior: smooth;">     
+  
+         
+           
+        </div>          
+                 
+                 
+                 
+                 
+    </div>
+    <div class="active" id="overlay"></div>
+        
+                      
+
+
+
+
+
+        </div>
+        
+           
+            
+        
+     
+         
+
+
+      
+            
+    
+
+                                                      
+
+
+        {% endfor %}
+            </div>
+
+
+</div>
+             
+
+
+
+
+{% endif %}
+
+
+{% schema %}
+  {
+
+  "name": "popup",
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "ImageWEB",
+          "info": "image should be 800px x 800px"
+        },
+        {
+          "type": "image_picker",
+          "id": "imageMOBILE",
+          "label": "Image",
+          "info": "image should be 800px x 800px"
+        }
+	
+      
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "PopUp",
+    "category": "POPup",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+
+
+.model{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 1ms ease-in-out;
+    /* border: 1px solid black; */     
+    /* border-radius: 10px; */
+    z-index: 10000000000000;
+    background-color: white;
+    width: 100%;    
+    height: 100%;
+}
+
+.model.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+.close-button{
+    cursor: pointer;            
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0.5em 0;
+    background-color: white;
+    border-radius: 1px;
+    color:black;
+    position: absolute;
+    top: 70%;
+    left: 85%;
+	font-size: small;
+    font-weight: bold;
+
+}
+/* .model-body  
+{  
+    display: grid;
+    height: 100%;
+} */
+.model-body .img{    
+    position: relative;
+    height: 95vh;
+    width: 75px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: rgba(0, 0, 0, .5); */
+    pointer-events: none;   
+}
+
+#overlay.active{
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (min-width: 300px) and (max-width:500px) {
+    .close-button{
+        top: 60%;
+        left: 68%;     
+    }     
+}
+
+@media (min-width: 200px) and (max-width:786px){
+    .close-button{
+        top: 75%;
+        left: 33%;
+		width:33%;
+    }
+}
+
+
+
+
+{% endstylesheet %}
+
+{% javascript %}
+
+const openModelButtons = document.querySelectorAll('[data-model-target]')
+const closeModelButtons = document.querySelectorAll('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+openModelButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const model = document.querySelector(button.dataset.modelTarget)
+    openModel(model)
+  })
+})
+
+overlay.addEventListener('click', () => {
+  const models = document.querySelectorAll('.model.active')
+  models.forEach(model => {
+    closeModel(model)
+  })
+})
+
+closeModelButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const model = button.closest('.model')
+    closeModel(model)
+  })
+})
+
+function openModel(model) {
+  if (model == null) return
+  model.classList.add('active')
+  overlay.classList.add('active')
+}
+
+function closeModel(model) {
+  if (model == null) return
+  model.classList.remove('active')
+  overlay.classList.remove('active')
+}
+
+
+
+
+
+{% endjavascript %}

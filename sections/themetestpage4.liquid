@@ -1,0 +1,111 @@
+{% if section.blocks.size > 0 %}
+
+
+	<div class="imgurl1">
+      <div align="center">
+        {% for block in section.blocks %}
+           {%- assign image = block.settings.image -%}
+    {%- assign link = block.settings.link -%}
+     
+
+
+
+
+         <a href="{{ link }}">
+
+           <img   style="  padding-left: 10px;   padding-bottom: 30px; min-width: 100%;  max-width: 100%;"
+        src="{{ image | img_url: 'x1500' }}" alt="coblat">
+
+                           </a>
+
+
+      
+            
+    
+
+
+
+
+        {% endfor %}
+            </div>
+
+
+</div>
+             
+
+
+
+
+{% endif %}
+
+{% schema %}
+  {
+
+  "name": "IPANEMA",
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "image should be 800px x 800px"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+		{
+          "type": "text",
+          "id": "Caption1",
+          "label": "Caption"
+        }
+	
+      
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "IPANEMA",
+    "category": "Looks",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+         
+}
+imgurl1 {
+ margin: 5px; 
+}
+
+/* For devices 400px and larger: */
+@media only screen and (min-device-width: 768px) {
+  imgurl1 { 
+ margin: 0px; 
+    padding: 20px;
+  }
+}
+{% endstylesheet %}

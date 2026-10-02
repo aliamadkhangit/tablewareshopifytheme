@@ -1,0 +1,39 @@
+<div align= "center"class="page-width page-width--flush-small">
+  {% if section.settings.heading != blank %}
+    <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div data-id="{{ section.settings.gallery_id }}" class="reelfy-gallery page-width page-width--flush-small"></div>
+</div>
+
+<style>
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Reefly",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Accessories"
+    },
+    {
+      "type": "text",
+      "id": "gallery_id",
+      "label": "Gallery ID",
+      "info": "This is the reelfy-gallery data-id value",
+      "default": "23212"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Section for Reefly App for Old Themes",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

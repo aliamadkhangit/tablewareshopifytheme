@@ -1,0 +1,139 @@
+{% if section.blocks.size > 0 %}
+
+
+	<div class="imgurl1" style="padding-bottom: 30px;" >
+      <div align="center">
+        {% for block in section.blocks %}
+           {%- assign image = block.settings.image -%}
+    {%- assign link = block.settings.link -%}
+     {%- assign imagemob = block.settings.imagemob -%}
+
+
+
+              
+             
+        
+        
+        <a href="{{ link }}">
+
+           <img  class="webview" style="width:100%; "
+        src="{{ image | img_url: 'x1500' }}" alt="coblat">
+
+                           </a>
+
+ <a href="{{ link }}">
+
+           <img  class="mobileview" style="width:100%; "
+        src="{{ imagemob | img_url: 'x1500' }}" alt="coblat">
+
+                           </a>
+
+
+
+
+        
+       
+
+      
+            
+    
+
+
+
+
+        {% endfor %}
+            </div>
+
+
+</div>
+             
+
+
+
+
+{% endif %}
+
+{% schema %}
+  {
+
+  "name": "indiesection",
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Please Desktop Image Here"
+        },
+		{
+          "type": "image_picker",
+          "id": "imagemob",
+          "label": "Image",
+          "info": "Please Add Mobile Image Here "
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+		{
+          "type": "text",
+          "id": "Caption1",
+          "label": "Caption"
+        }
+	
+      
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "indiesection",
+    "category": "Looks",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+         
+}
+imgurl1 {
+ margin: 5px; 
+}
+
+/* For devices 400px and larger: */
+@media only screen and (min-device-width: 768px) {
+  imgurl1 { 
+ margin: 0px; 
+    padding: 0px;
+  }
+}
+{% endstylesheet %}
+
+
+
+
+
+
+

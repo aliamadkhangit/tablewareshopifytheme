@@ -1,0 +1,162 @@
+{% if section.blocks.size > 0 %}
+{% for block in section.blocks %}
+          {%- assign image = block.settings.image -%}   
+          {%- assign title = block.settings.title -%}  
+          {%- assign link = block.settings.link -%}
+          <!-- Marking The End Of First Linking -->
+          {%- assign image2 = block.settings.image2 -%}   
+          {%- assign title2 = block.settings.title2 -%}  
+          {%- assign link2 = block.settings.link2 -%}
+          <!-- Marking The End Of First Linking -->
+
+
+    <div style="padding: 0px 0;"  align="center" >
+    
+                <div class="row a row2">
+                    
+                    <div class="TableBanner3 a " >
+                      <a href="{{ link }}">
+                       											  
+                        <img src="{{ image | img_url: '800x1400' }}" alt="Tableware Banner 1" title="Tableware Banner 1" style="width:100%">
+                        <div  style="font-size: 20px; line-height: 1.25;     margin-bottom: 20px;margin-top: 20px;">  {{ title }}      </div>                								
+                                  
+                      </a>
+                       
+                    </div>
+                  <!-- Marking The End -->
+                    <div class="TableBanner3 a ">
+                      <a href="{{ link2 }}">
+                       											  
+                        <img src="{{ image2 | img_url: '800x1400' }}" alt="Tableware Banner 1" title="Tableware Banner 1" style="width:100%">
+                        <div  style="font-size: 20px; line-height: 1.25;     margin-bottom: 20px;margin-top: 20px;">  {{ title2 }}      </div>                								
+                                  
+                      </a>
+                       
+                    </div>
+                  <!-- Marking The End -->
+
+                   
+
+
+
+                  
+                </div>
+                <!-- Marking The End Of Row -->
+      
+    </div>
+
+{% endfor %}
+{% endif %}
+
+
+{% schema %}
+  {
+
+  "name": "Tableware Banner 3",
+  "max_blocks": 1,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+                                        {
+                                          "type": "image_picker",
+                                          "id": "image",
+                                          "label": "Image 1",
+                                          "info": "image should be 800px x 800px"
+                                        },
+                                        {
+                                          "type": "url",
+                                          "id": "link",
+                                          "label": "Link 1"
+                                        },
+                                        {
+                                        "type": "text",
+                                        "id": "title",
+                                        "label": "Lable 1",
+                                        "default": "Text Here"
+                                       },
+                                                       {
+                                                          "type": "image_picker",
+                                                          "id": "image2",
+                                                          "label": "Image 2",
+                                                          "info": "image should be 800px x 800px"
+                                                        },
+                                                        {
+                                                          "type": "url",
+                                                          "id": "link2",
+                                                          "label": "Link 2"
+                                                        },
+                                                        {
+                                                        "type": "text",
+                                                        "id": "title2",
+                                                        "label": "Lable 2",
+                                                        "default": "Text Here"
+                                                       } 
+		
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "Tableware Banner 3",
+    "category": "Banners",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+a {
+  box-sizing: border-box;
+}
+
+.TableBanner3 { 
+  float: left; 
+  width:  50%;   
+  padding-left: 25px;     
+  padding-right: 25px;  
+  padding-top:2px;
+}
+@media screen and (max-width: 767px) {
+  .TableBanner3 {   
+      width:  100%;            
+       padding-left:  1px;
+       padding-right: 1px;     
+  } 
+
+}
+.row2 { 
+   
+  padding-left: 155px;     
+  padding-right: 155px;  
+
+}
+@media screen and (max-width: 767px) {
+  .row2 { 
+       padding-left:  30px;
+       padding-right: 30px;
+  } 
+
+}
+
+
+
+
+  
+/* Clearfix (clear floats) */ 
+.row::after {
+  content: ""; 
+  clear: both;
+  display: table;
+}
+
+
+
+
+{% endstylesheet %}

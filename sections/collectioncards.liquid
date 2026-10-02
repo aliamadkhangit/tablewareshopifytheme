@@ -1,0 +1,224 @@
+{% if section.blocks.size > 0 %}
+
+
+
+        {% for block in section.blocks %}
+          {%- assign image = block.settings.image -%}
+          {%- assign image2 = block.settings.image2 -%}
+          {%- assign image3 = block.settings.image3 -%}  
+  		  {%- assign image4 = block.settings.image4 -%}  
+		  {%- assign image5 = block.settings.image5 -%} 
+          {%- assign image6 = block.settings.image6 -%} 
+          {%- assign image7 = block.settings.image7 -%} 
+          {%- assign image8 = block.settings.image8 -%} 
+ {%- assign image9 = block.settings.image9 -%} 
+          {%- assign image10 = block.settings.image10 -%} 
+
+
+
+
+
+
+
+
+ {%- assign link = block.settings.link -%}
+ {%- assign link2 = block.settings.link2 -%}
+ {%- assign link3 = block.settings.link3 -%}
+ {%- assign link4 = block.settings.link4 -%}
+ {%- assign link5 = block.settings.link5 -%}
+
+ {%- assign link6 = block.settings.link6 -%}
+ {%- assign link7 = block.settings.link7 -%}
+ {%- assign link8 = block.settings.link8 -%}
+ {%- assign link9 = block.settings.link9 -%}
+ {%- assign link10 = block.settings.link10 -%}
+<div style="padding: 0px 0;   ">
+<div align="center">
+
+
+<div class="row a">
+  
+  
+  
+  <div style="font-size: 20px;
+    line-height: 1.25;     margin-bottom: 30px;margin-top: 30px;
+    ">     </div>
+  
+  
+  
+  
+  <div class="colbanner a ">
+    <a href="{{ link }}">
+     											  <img src="{{ image | img_url: '1200x600' }}" alt="" style="width:100%">
+                      								
+                   </a>
+  </div>
+    <div class="colbanner a ">
+    <a href="{{ link2 }}">
+     											  <img src="{{ image2 | img_url: '1200x600' }}" alt="" style="width:100%">
+                      								
+                   </a>
+  </div>
+   <div class="colbanner a ">
+    <a href="{{ link3 }}">
+     											  <img src="{{ image3 | img_url: '1200x600' }}" alt="" style="width:100%">
+                      								
+                   </a>
+  </div>
+     <div class="colbanner a ">
+    <a href="{{ link4 }}">
+     											  <img src="{{ image4 | img_url: '1200x600' }}" alt="" style="width:100%">
+                      								
+                   </a>
+ </div>
+
+
+     
+  </div>
+
+
+</div>
+
+
+</div>
+
+  		  {% endfor %}
+
+
+             
+
+
+
+
+{% endif %}
+
+{% schema %}
+  {
+
+  "name": "Asos 4 2 Slide",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "image should be 800px x 800px"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+	
+		 {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image",
+          "info": "image should be 300px x 300px"
+        },
+        {
+          "type": "url",
+          "id": "link2",
+          "label": "Link"
+        },
+		
+		 {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Image",
+          "info": "image should be 300px x 300px"
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Link"
+        },
+	
+
+       {   "type": "image_picker",
+          "id": "image4",
+          "label": "Image",
+          "info": "image should be 300px x 300px"
+        },
+        {
+          "type": "url",
+          "id": "link4",
+          "label": "Link"
+        }
+		
+
+
+
+
+
+
+
+
+
+
+
+      ]
+    }
+    
+  ],
+  "presets": [{
+    "name": "Asos 4 2",  
+    "category": "Banners",
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+
+a {
+  box-sizing: border-box;
+}
+
+
+.colbanner { 
+  float: left; 
+  width:  25%; 
+  padding: 30px;  
+padding-bottom:2px;
+
+}      
+
+.
+/* Clearfix (clear floats) */ 
+.row::after {
+  content: ""; 
+  clear: both;
+  display: table;
+}
+@media screen and (max-width: 767px) {
+  .colbanner { 
+       width: 50%; 
+	  padding: 15px; 
+  } 
+
+}
+
+.mobilehidden
+{
+display:block;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 767px) {
+  .mobilehidden {
+    display:none;
+  }
+
+}
+
+
+{% endstylesheet %}
